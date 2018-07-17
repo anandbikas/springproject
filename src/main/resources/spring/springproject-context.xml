@@ -14,6 +14,7 @@
         <property name="ignoreResourceNotFound" value="true" />
         <property name="locations">
             <list>
+                <value>classpath:application.properties</value>
                 <value>file:${APP_HOME}/conf/application-override.properties</value>
                 <value>classpath:META-INF/maven/com.anand/springproject/pom.properties</value>
             </list>

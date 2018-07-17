@@ -32,6 +32,7 @@
         <org.springframework.boot.version>2.0.3.RELEASE</org.springframework.boot.version>
         <org.springframework.security.version>4.2.4.RELEASE</org.springframework.security.version>
         <org.springframework.retry.version>1.2.2.RELEASE</org.springframework.retry.version>
+        <org.springframework.cloud.version>2.0.0.RELEASE</org.springframework.cloud.version>
 
         <org.slf4j.version>1.7.25</org.slf4j.version>
 
@@ -112,6 +113,22 @@
                 <groupId>org.springframework.retry</groupId>
                 <artifactId>spring-retry</artifactId>
                 <version>${org.springframework.retry.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-commons</artifactId>
+                <version>${org.springframework.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-sleuth-core</artifactId>
+                <version>${org.springframework.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+                <version>${org.springframework.cloud.version}</version>
             </dependency>
             <!-- Spring dependencies: End -->
 
