@@ -42,7 +42,7 @@
     <dependencies>
         <!--service dependencies-->
 
-        <!--Use spring-boot-startrer if tocat server is not required-->
+        <!--Use spring-boot-startrer if tomcat server is not required-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-starter</artifactId>-->
