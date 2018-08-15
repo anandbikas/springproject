@@ -5,9 +5,9 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation ="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -15,7 +15,7 @@
         <property name="locations">
             <list>
                 <value>classpath:application.properties</value>
-                <value>file:${APP_HOME}/conf/application-override.properties</value>
+                <!--<value>file:${APP_HOME}/conf/application-override.properties</value>-->
                 <value>classpath:META-INF/maven/com.anand/springproject/pom.properties</value>
             </list>
         </property>
@@ -24,24 +24,28 @@
     <context:component-scan base-package="com.anand.springproject" />
 
     <bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
-        <property name="retryPolicy" ref="simpleRetryPolicy"></property>
-        <property name="backOffPolicy" ref="exponentialBackOffPolicy"></property>
+        <property name="retryPolicy">
+            <bean class="org.springframework.retry.policy.SimpleRetryPolicy">
+                <constructor-arg  name="maxAttempts" value="${springproject.retry.maxAttempts:3}"/>
+                <constructor-arg name="retryableExceptions">
+                    <!--Empty retryableExceptionsMap means retry on all exceptions-->
+                    <util:map id="retryableExceptionsMap" map-class="java.util.HashMap" key-type="java.lang.Class">
+                        <entry key="java.lang.RuntimeException" value="true" />
+                        <entry key="java.lang.IllegalArgumentException" value="false" />
+                    </util:map>
+                </constructor-arg>
+            </bean>
+        </property>
+        <property name="backOffPolicy" >
+            <bean class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+                <property name="initialInterval" value="${springproject.retry.initialInterval:500}"/>
+                <property name="maxInterval" value="${springproject.retry.maxInterval:60000}"/>
+                <property name="multiplier" value="${springproject.retry.multiplier:2}"/>
+            </bean>
+        </property>
     </bean>
 
-    <bean id="simpleRetryPolicy" class="org.springframework.retry.policy.SimpleRetryPolicy">
-        <constructor-arg  name="maxAttempts" value="${springproject.retry.maxAttempts:3}"></constructor-arg >
-        <constructor-arg name="retryableExceptions" ref="retryableExceptionsMap"></constructor-arg>
-    </bean>
+    <import resource="rabbit-context.xml" />
+    <import resource="rabbit-resource-context.xml" />
 
-    <!--Empty retryableExceptionsMap means retry on all exceptions-->
-    <util:map id="retryableExceptionsMap" map-class="java.util.HashMap" key-type="java.lang.Class">
-        <entry key="java.lang.RuntimeException" value="true" />
-        <entry key="java.lang.IllegalArgumentException" value="false" />
-    </util:map>
-
-    <bean id="exponentialBackOffPolicy" class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
-        <property name="initialInterval" value="${springproject.retry.initialInterval:500}"></property>
-        <property name="maxInterval" value="${springproject.retry.maxInterval:60000}"></property>
-        <property name="multiplier" value="${springproject.retry.multiplier:2}"></property>
-    </bean>
 </beans>

@@ -6,6 +6,7 @@ package com.anand.springproject.utils;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.EnableRetry;
@@ -30,6 +31,7 @@ public class ServiceState {
     final Random random = new Random();
 
     @Autowired
+    @Qualifier("retryTemplate")
     private RetryTemplate retryTemplate;
 
     @Value("${springproject.retry.maxAttempts:3}")

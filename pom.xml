@@ -29,7 +29,7 @@
 
         <!-- Spring -->
         <org.springframework.version>5.0.7.RELEASE</org.springframework.version>
-        <org.springframework.boot.version>2.0.3.RELEASE</org.springframework.boot.version>
+        <org.springframework.boot.version>2.0.4.RELEASE</org.springframework.boot.version>
         <org.springframework.security.version>4.2.4.RELEASE</org.springframework.security.version>
         <org.springframework.retry.version>1.2.2.RELEASE</org.springframework.retry.version>
         <org.springframework.cloud.version>2.0.0.RELEASE</org.springframework.cloud.version>
@@ -42,7 +42,7 @@
     <dependencies>
         <!--service dependencies-->
 
-        <!--Use spring-boot-startrer if tomcat server is not required-->
+        <!--Use spring-boot-starter if tomcat server is not required-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-starter</artifactId>-->
@@ -51,6 +51,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
         <dependency>
@@ -93,6 +98,12 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
+                <version>${org.springframework.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
                 <version>${org.springframework.boot.version}</version>
             </dependency>
 

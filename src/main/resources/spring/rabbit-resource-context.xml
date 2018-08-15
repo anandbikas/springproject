@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd">
+
+    <!-- Queues -->
+    <rabbit:queue id="demoQueue1" name="demo.queue.1" auto-delete="true" durable="false"/>
+    <rabbit:queue id="demoQueue2" name="demo.queue.2" auto-delete="true" durable="false"/>
+    <rabbit:queue id="demoQueue3" name="demo.queue.3" auto-delete="true" durable="false"/>
+
+    <rabbit:queue id="spamQueue" name="spam.queue" auto-delete="true" durable="false"/>
+    <rabbit:queue id="importantQueue" name="important.queue" auto-delete="true" durable="false"/>
+
+
+    <!-- Exchange with Queue Bindings -->
+    <rabbit:fanout-exchange name="demo.fanout.exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="demoQueue1"/>
+            <rabbit:binding queue="demoQueue2"/>
+            <rabbit:binding queue="demoQueue3"/>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+
+    <rabbit:direct-exchange name="demo.direct.exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="demoQueue1" key="demo.queue.1"/>
+            <rabbit:binding queue="demoQueue2" key="demo.queue.2"/>
+            <rabbit:binding queue="demoQueue3" key="demo.queue.3"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <rabbit:topic-exchange name="demo.topic.exchange">
+        <rabbit:bindings>
+            <rabbit:binding pattern="#.spam.#" queue="spamQueue"/>
+            <rabbit:binding pattern="#.important.#" queue="importantQueue"/>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+    <rabbit:template id="topicExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     retry-template="rabbitRetryTemplate" exchange="demo.topic.exchange"/>
+
+    <rabbit:template id="directExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     retry-template="rabbitRetryTemplate" exchange="demo.direct.exchange"/>
+
+    <rabbit:template id="fanoutExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     retry-template="rabbitRetryTemplate" exchange="demo.fanout.exchange"/>
+
+
+    <!--<rabbit:listener-container connection-factory="amqpConnectionFactory">-->
+    <!--<rabbit:listener queues="demoQueue" ref="myMessageListener"/>-->
+    <!--</rabbit:listener-container>-->
+
+</beans>
