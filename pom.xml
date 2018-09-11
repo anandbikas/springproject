@@ -35,6 +35,7 @@
         <org.springframework.cloud.version>2.0.0.RELEASE</org.springframework.cloud.version>
 
         <org.slf4j.version>1.7.25</org.slf4j.version>
+        <org.apache.poi.version>3.17</org.apache.poi.version>
 
     </properties>
 
@@ -72,6 +73,13 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
         </dependency>
+
+        <!--Excel Dependency-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+        </dependency>
+
 
         <!--test dependencies-->
         <dependency>
@@ -147,6 +155,12 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-ext</artifactId>
                 <version>${org.slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${org.apache.poi.version}</version>
             </dependency>
 
         </dependencies>
