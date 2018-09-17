@@ -108,7 +108,7 @@ public class ServiceState {
                     throw new RuntimeException();
                 }
 
-                if(random.nextInt(2)==0) {
+                if(random.nextInt(3)==0) {
                     throw new IllegalArgumentException();
                 }
 
