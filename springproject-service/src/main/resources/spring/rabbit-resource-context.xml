@@ -40,16 +40,6 @@
         </rabbit:bindings>
     </rabbit:topic-exchange>
 
-    <rabbit:template id="topicExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
-                     retry-template="rabbitRetryTemplate" exchange="demo.topic.exchange"/>
-
-    <rabbit:template id="directExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
-                     retry-template="rabbitRetryTemplate" exchange="demo.direct.exchange"/>
-
-    <rabbit:template id="fanoutExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
-                     retry-template="rabbitRetryTemplate" exchange="demo.fanout.exchange"/>
-
-
     <!--<rabbit:listener-container connection-factory="amqpConnectionFactory">-->
     <!--<rabbit:listener queues="demoQueue" ref="myMessageListener"/>-->
     <!--</rabbit:listener-container>-->

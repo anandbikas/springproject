@@ -7,6 +7,7 @@ import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,9 +22,9 @@ public class AmqpDemo {
     @Autowired
     private AmqpTemplate amqpTemplate;
 
-//    @Autowired
-//    @Qualifier("topicExchangeAmqpTemplate")
-//    private AmqpTemplate topicExchangeAmqpTemplate;
+    @Autowired
+    @Qualifier("topicExchangeAmqpTemplate")
+    private AmqpTemplate topicExchangeAmqpTemplate;
 
     /**
      *
@@ -36,6 +37,8 @@ public class AmqpDemo {
 
         amqpTemplate.convertAndSend(DEMO_TOPIC_EXCHANGE, "important.information","Topic message with key important.information");
         amqpTemplate.convertAndSend(DEMO_TOPIC_EXCHANGE, "spam.data","Topic message with key spam.data");
+
+        topicExchangeAmqpTemplate.convertAndSend("important.information","Topic message with key important.information 1");
 
         logger.info("AmqpDemo testing done.");
     }

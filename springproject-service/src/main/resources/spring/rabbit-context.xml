@@ -42,4 +42,15 @@
         <constructor-arg ref="amqpTemplate"/>
     </bean>
 
+    <!--Optional Separate rabbit templates for exchange-->
+    <rabbit:template id="topicExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     retry-template="rabbitRetryTemplate" exchange="demo.topic.exchange"/>
+
+    <rabbit:template id="directExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     retry-template="rabbitRetryTemplate" exchange="demo.direct.exchange"/>
+
+    <rabbit:template id="fanoutExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+                     retry-template="rabbitRetryTemplate" exchange="demo.fanout.exchange"/>
+
+
 </beans>
