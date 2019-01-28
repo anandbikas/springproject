@@ -10,6 +10,8 @@
         <module>springproject-service</module>
         <module>springproject-client</module>
         <module>springproject-core</module>
+        <module>springproject-utils</module>
+        <module>springproject-library</module>
     </modules>
     <packaging>pom</packaging>
 

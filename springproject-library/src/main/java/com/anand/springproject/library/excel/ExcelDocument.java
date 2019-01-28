@@ -1,4 +1,4 @@
-package com.anand.springproject.utils.excel;
+package com.anand.springproject.library.excel;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -8,20 +8,19 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.util.HashMap;
 
-@Component
+/**
+ *
+ */
 public class ExcelDocument {
 
     private static final XLogger logger = XLoggerFactory.getXLogger(ExcelDocument.class);
 
-    @Value("${excel.file.name}")
     private String excelFileName;
 
     private static final DataFormatter dataFormatter = new DataFormatter();
@@ -29,7 +28,7 @@ public class ExcelDocument {
     private HSSFSheet sheet;
     private int rows = 0;
 
-    HashMap<String, Integer> fieldCellMap = new HashMap<>();
+    final HashMap<String, Integer> fieldCellMap = new HashMap<>();
 
     /**
      *
@@ -90,5 +89,21 @@ public class ExcelDocument {
      */
     public int getRows() {
         return rows;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getExcelFileName() {
+        return excelFileName;
+    }
+
+    /**
+     *
+     * @param excelFileName
+     */
+    public void setExcelFileName(String excelFileName) {
+        this.excelFileName = excelFileName;
     }
 }
