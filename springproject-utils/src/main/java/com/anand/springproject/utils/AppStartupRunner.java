@@ -19,7 +19,7 @@ public class AppStartupRunner implements ApplicationRunner, ApplicationContextAw
 
     @Override
     public void run(ApplicationArguments args) {
-        logger.info("Application started with option names : {}", args.getOptionNames());
+        logger.info("Application started with commands: {} and options: {}", args.getNonOptionArgs(), args.getOptionNames());
 
         args.getNonOptionArgs().forEach(command -> {
             try {
