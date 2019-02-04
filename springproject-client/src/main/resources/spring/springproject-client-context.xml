@@ -10,6 +10,5 @@
     <context:component-scan base-package="com.anand.springproject.client" />
 
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
-    <bean id="springProjectClient" class="com.anand.springproject.client.SpringProjectClient" />
 
 </beans>
