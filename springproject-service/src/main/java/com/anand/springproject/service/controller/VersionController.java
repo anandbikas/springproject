@@ -1,7 +1,7 @@
 /**
  * @author Bikas Anand
  */
-package com.anand.springproject.controller;
+package com.anand.springproject.service.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

@@ -23,6 +23,7 @@ public class AppStartupRunner implements ApplicationRunner, ApplicationContextAw
 
         args.getNonOptionArgs().forEach(command -> {
             try {
+                logger.info("Running command: {} ...", command);
                 applicationContext.getBean(command, Command.class).run();
             } catch (Exception ex){
                     throw new RuntimeException(ex);

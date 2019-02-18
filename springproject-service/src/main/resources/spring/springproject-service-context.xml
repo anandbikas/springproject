@@ -50,7 +50,4 @@
     <import resource="rabbit-context.xml" />
     <import resource="rabbit-resource-context.xml" />
 
-    <bean id="studentExcelDocument" class="com.anand.springproject.library.excel.ExcelDocument">
-        <property name="excelFileName" value="${excel.file.name.student}" />
-    </bean>
 </beans>

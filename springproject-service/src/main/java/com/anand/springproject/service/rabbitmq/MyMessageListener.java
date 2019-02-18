@@ -1,4 +1,4 @@
-package com.anand.springproject.rabbitmq;
+package com.anand.springproject.service.rabbitmq;
 
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;

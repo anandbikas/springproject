@@ -1,7 +1,7 @@
 /**
  * @author Bikas Anand
  */
-package com.anand.springproject;
+package com.anand.springproject.service;
 
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
@@ -11,12 +11,12 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource("classpath:spring/springproject-service-context.xml")
-public class SpringprojectApplication {
+public class SpringprojectServiceApplication {
 
-    private static final XLogger logger = XLoggerFactory.getXLogger(SpringprojectApplication.class);
+    private static final XLogger logger = XLoggerFactory.getXLogger(SpringprojectServiceApplication.class);
 
     public static void main(String[] args) {
         logger.info("Starting SpringprojectApplication...");
-        SpringApplication.run(SpringprojectApplication.class, args);
+        SpringApplication.run(SpringprojectServiceApplication.class, args);
     }
 }

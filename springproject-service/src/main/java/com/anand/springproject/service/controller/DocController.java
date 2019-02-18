@@ -1,7 +1,7 @@
 /**
  * @author Bikas Anand
  */
-package com.anand.springproject.controller;
+package com.anand.springproject.service.controller;
 
 import com.anand.springproject.service.DocService;
 import org.springframework.beans.factory.annotation.Autowired;

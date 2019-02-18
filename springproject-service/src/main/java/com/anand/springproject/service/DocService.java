@@ -4,6 +4,7 @@ import com.anand.springproject.core.domain.Student;
 import com.anand.springproject.library.excel.ExcelDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,9 +18,17 @@ public class DocService {
 
     final static String STUDENTS = "students";
 
-    @Autowired
-    @Qualifier("studentExcelDocument")
-    ExcelDocument excelDocument;
+    @Value("${excel.file.name.student}")
+    private String excelFileNameStudent;
+
+    private ExcelDocument excelDocument;
+
+    /**
+     *
+     */
+    public DocService(){
+        excelDocument = new ExcelDocument(excelFileNameStudent);
+    }
 
     /**
      * @param namespace

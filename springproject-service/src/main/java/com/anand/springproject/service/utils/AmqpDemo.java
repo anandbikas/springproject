@@ -1,7 +1,7 @@
 /**
  * @author Bikas Anand
  */
-package com.anand.springproject.utils;
+package com.anand.springproject.service.utils;
 
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;

@@ -1,7 +1,7 @@
 /**
  * @author Bikas Anand
  */
-package com.anand.springproject.controller;
+package com.anand.springproject.service.controller;
 
 import com.anand.springproject.core.domain.State;
 import com.anand.springproject.utils.ServiceState;

@@ -10,7 +10,6 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 
-import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.util.HashMap;
 
@@ -33,8 +32,9 @@ public class ExcelDocument {
     /**
      *
      */
-    @PostConstruct
-    public void readFile() {
+    public ExcelDocument(final String excelFileName) {
+        this.excelFileName = excelFileName;
+
         try{
             POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(excelFileName));
 
@@ -99,11 +99,4 @@ public class ExcelDocument {
         return excelFileName;
     }
 
-    /**
-     *
-     * @param excelFileName
-     */
-    public void setExcelFileName(String excelFileName) {
-        this.excelFileName = excelFileName;
-    }
 }

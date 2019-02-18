@@ -1,4 +1,4 @@
-package com.anand.springproject.config;
+package com.anand.springproject.service.config;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
