@@ -4,7 +4,7 @@
 package com.anand.springproject.service.controller;
 
 import com.anand.springproject.core.domain.State;
-import com.anand.springproject.utils.ServiceState;
+import com.anand.springproject.service.utils.ServiceState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

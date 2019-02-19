@@ -40,8 +40,13 @@
         </rabbit:bindings>
     </rabbit:topic-exchange>
 
-    <!--<rabbit:listener-container connection-factory="amqpConnectionFactory">-->
-    <!--<rabbit:listener queues="demoQueue" ref="myMessageListener"/>-->
+
+    <!--<bean name="demoQueue1MessageListenerAdapter" class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">-->
+        <!--<constructor-arg name="delegate" ref="demoQueue1MessageReceiver"/>-->
+    <!--</bean>-->
+
+    <!--<rabbit:listener-container connection-factory="amqpConnectionFactory" auto-declare="false">-->
+        <!--<rabbit:listener queues="demoQueue1" ref="demoQueue1MessageListenerAdapter"/>-->
     <!--</rabbit:listener-container>-->
 
 </beans>

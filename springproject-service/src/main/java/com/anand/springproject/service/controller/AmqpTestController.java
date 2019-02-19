@@ -3,7 +3,7 @@
  */
 package com.anand.springproject.service.controller;
 
-import com.anand.springproject.utils.AmqpDemo;
+import com.anand.springproject.service.utils.AmqpDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

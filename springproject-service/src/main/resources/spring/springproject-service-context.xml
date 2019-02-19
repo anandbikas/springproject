@@ -21,7 +21,7 @@
         </property>
     </bean>
 
-    <context:component-scan base-package="com.anand.springproject" />
+    <context:component-scan base-package="com.anand.springproject.service" />
     <import resource="springproject-library-context.xml" />
 
 
