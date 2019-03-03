@@ -1,5 +1,6 @@
 package com.anand.springproject.client;
 
+import com.anand.springproject.client.exception.SpringprojectClientRetriableException;
 import com.anand.springproject.core.domain.State;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.ext.XLogger;
@@ -36,11 +37,15 @@ public class SpringProjectClient {
 
         final String resourceUrl = springProjectServerBaseUrl + SPRING_PROJECT_STATUS_URI;
 
-        ResponseEntity<State> responseEntity
-                = restTemplate.getForEntity(resourceUrl, State.class);
-        logger.debug("getSpringProjectStatus response: " + prettyString(responseEntity.getBody()));
+        try {
+            ResponseEntity<State> responseEntity
+                    = restTemplate.getForEntity(resourceUrl, State.class);
+            logger.debug("getSpringProjectStatus response: " + prettyString(responseEntity.getBody()));
 
-        return responseEntity.getBody().getState();
+            return responseEntity.getBody().getState();
+        } catch (Exception e){
+            throw logger.throwing(XLogger.Level.WARN, new SpringprojectClientRetriableException("Exception in getSpringProjectStatus", e));
+        }
     }
 
     /**
@@ -53,9 +58,14 @@ public class SpringProjectClient {
 
         final State state = new State();
         state.setState(stateValue);
-        ResponseEntity<String> responseEntity
-                = restTemplate.postForEntity(resourceUrl, state, String.class);
-        logger.debug("setSpringProjectStatus response: " + prettyString(responseEntity.getBody()));
+
+        try {
+            ResponseEntity<String> responseEntity
+                    = restTemplate.postForEntity(resourceUrl, state, String.class);
+            logger.debug("setSpringProjectStatus response: " + prettyString(responseEntity.getBody()));
+        } catch (Exception e){
+            throw logger.throwing(XLogger.Level.WARN, new SpringprojectClientRetriableException("Exception in setSpringProjectStatus", e));
+        }
 
     }
 
