@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="60 seconds">
 
     <timestamp key="timestamp" timeReference="contextBirth" datePattern="yyyyMMdd'T'HHmmss"/>
 
@@ -53,9 +53,32 @@
         </filter>
     </appender>
 
-    <logger name="com.anand" level="debug"/>
+    <appender name="ACCESS_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFileName}-access.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${logFileName}-access.%i.log.gz</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>5</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
 
-    <root level="warn">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- For API access logging -->
+    <logger name="accesslog" level="${accesslog.level:-INFO}" additivity="false">
+        <appender-ref ref="ACCESS_FILE"/>
+    </logger>
+
+
+    <logger name="com.anand" level="${log.level:-DEBUG}"/>
+
+    <root level="${root.log.level:-WARN}">
         <appender-ref ref="FILE" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="ERROR_FILE" />

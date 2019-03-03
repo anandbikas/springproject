@@ -15,9 +15,9 @@ public class AmqpDemo {
 
     private static final XLogger logger = XLoggerFactory.getXLogger(AmqpDemo.class);
 
-    private static final String DEMO_FANOUT_EXCHANGE="demo.fanout.exchange";
-    private static final String DEMO_DIRECT_EXCHANGE="demo.direct.exchange";
-    private static final String DEMO_TOPIC_EXCHANGE="demo.topic.exchange";
+    public static final String DEMO_FANOUT_EXCHANGE="demo.fanout.exchange";
+    public static final String DEMO_DIRECT_EXCHANGE="demo.direct.exchange";
+    public static final String DEMO_TOPIC_EXCHANGE="demo.topic.exchange";
 
     @Autowired
     private AmqpTemplate amqpTemplate;

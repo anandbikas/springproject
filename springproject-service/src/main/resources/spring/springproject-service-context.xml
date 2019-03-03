@@ -16,7 +16,7 @@
             <list>
                 <value>classpath:application.properties</value>
                 <value>file:${APP_HOME}/conf/application-override.properties</value>
-                <value>classpath:META-INF/maven/com.anand/springproject/pom.properties</value>
+                <value>classpath:META-INF/maven/com.anand/springproject/service/pom.properties</value>
             </list>
         </property>
     </bean>

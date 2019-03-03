@@ -8,6 +8,8 @@ import org.slf4j.ext.XLoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.event.ContextClosedEvent;
+import org.springframework.context.event.EventListener;
 
 @SpringBootApplication
 @ImportResource("classpath:spring/springproject-service-context.xml")
@@ -19,4 +21,13 @@ public class SpringprojectServiceApplication {
         logger.info("Starting SpringprojectApplication...");
         SpringApplication.run(SpringprojectServiceApplication.class, args);
     }
+
+    /**
+     * Add shutdown logger.
+     */
+    @EventListener
+    public void onShutdown(ContextClosedEvent event) {
+        logger.info("SpringprojectServiceApplication shutdown completed");
+    }
+
 }
