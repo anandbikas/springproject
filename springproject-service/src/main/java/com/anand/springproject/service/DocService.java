@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,8 @@ public class DocService {
     /**
      *
      */
-    public DocService(){
+    @PostConstruct
+    public void init(){
         excelDocument = new ExcelDocument(excelFileNameStudent);
     }
 

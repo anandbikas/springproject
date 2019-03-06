@@ -32,3 +32,5 @@ conf/*
 */target/
 logs/
 */logs/
+*/docker_target
+*/src/run_docker.retry

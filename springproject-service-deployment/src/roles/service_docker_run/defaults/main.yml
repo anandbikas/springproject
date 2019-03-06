@@ -1,0 +1,12 @@
+---
+local_image: "true"
+service_version: "latest"
+
+docker_registry: "registry.anand.com:443"
+
+docker_image: "{{ '' if local_image == 'true' else docker_registry + '/' }}{{ service_group }}/{{ service_name }}:{{ service_version }}"
+
+app_home: "/usr/local/{{ service_group }}/{{ service_name }}"
+
+tomcat_service_port_forward: "{{ '-p ' + tomcat_service_port + ':8443' if tomcat_service_port is defined else '' }}"
+service_debug_port_forward:  "{{ '-p ' + service_debug_port + ':' + service_debug_port + ' -e ' + 'DEBUG_PORT=' + service_debug_port if service_debug_port is defined else '' }}"

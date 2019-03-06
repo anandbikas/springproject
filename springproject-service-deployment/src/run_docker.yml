@@ -1,0 +1,18 @@
+- hosts: localhost
+  connection: local
+  vars_files:
+    - ../env/{{ var_env }}/property_overrides.yml
+
+  vars:
+    service_name: "springproject-service"
+    service_group: "anand"
+    tomcat_service_port: "8443"
+    service_debug_port: "50101"
+    var_env: "vagrant"
+
+    docker_target_dir: "{{ playbook_dir }}/../docker_target"
+    template_path: "{{ playbook_dir }}/templates"
+    pom_path: "{{ playbook_dir }}/../.."
+
+  roles:
+    - "{{ playbook_dir }}/roles/service_docker_run"

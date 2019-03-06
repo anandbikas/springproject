@@ -32,6 +32,7 @@ public class SslRestTemplateConfig {
     @Value("${servers.truststore.password:password}")
     private String trustStorePassword;
 
+    private static final int CONNECT_TIMEOUT_MS = 5000;
     private static final int REQUEST_TIMEOUT_MS = 30000;
 
     @Bean
@@ -49,7 +50,7 @@ public class SslRestTemplateConfig {
                                     trustStorePassword.toCharArray()
                 ).build();
 
-        final RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(REQUEST_TIMEOUT_MS).build();
+        final RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT_MS).setSocketTimeout(REQUEST_TIMEOUT_MS).build();
 
         final SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(
                 sslContext,
