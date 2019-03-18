@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="60 seconds">
 
-    <timestamp key="timestamp" datePattern="yyyyMMdd'T'HHmmss"/>
+    <timestamp key="timestamp" timeReference="contextBirth" datePattern="yyyyMMdd'T'HHmmss"/>
+
+    <property resource="META-INF/build-info.properties" />
 
     <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] &#60;%mdc, methodName=%method&#62; %logger{0} - %msg%n%n"/>
-    <property name="logFileName" value="logs/springproject-utils-${timestamp}"/>
+    <property name="logFileName" value="logs/${build.artifact}-${timestamp}"/>
+
 
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -53,9 +56,9 @@
         </filter>
     </appender>
 
-    <logger name="com.anand" level="debug"/>
+    <logger name="com.anand" level="${log.level:-DEBUG}"/>
 
-    <root level="warn">
+    <root level="${root.log.level:-WARN}">
         <appender-ref ref="FILE" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="ERROR_FILE" />

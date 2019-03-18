@@ -57,7 +57,10 @@ public class SslRestTemplateConfig {
                 new String[] {"TLSv1.2"}, null,
                 new DefaultHostnameVerifier()
                 );
-        HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).setDefaultRequestConfig(requestConfig).build();
+        HttpClient httpClient = HttpClients.custom()
+                .setSSLSocketFactory(csf)
+                .setDefaultRequestConfig(requestConfig)
+                .build();
 
         return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
     }

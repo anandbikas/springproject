@@ -16,6 +16,7 @@
 
     <dependencies>
 
+        <!--Spring dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -31,6 +32,8 @@
             <artifactId>spring-retry</artifactId>
         </dependency>
 
+
+        <!--Other dependencies-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
@@ -47,7 +50,8 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!--test dependencies-->
+
+        <!--Test dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

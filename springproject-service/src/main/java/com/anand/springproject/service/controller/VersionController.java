@@ -21,7 +21,7 @@ public class VersionController
 
     //TODO: Access logger
 
-    @Value("${version:0.0.0}")
+    @Value("${build.version:0.0.0}")
     private String serviceVersion;
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> getState(){

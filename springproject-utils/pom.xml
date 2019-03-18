@@ -19,19 +19,28 @@
 
     <dependencies>
 
+        <!-- Spring dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
 
+
+        <!-- Other dependencies -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.anand</groupId>
+            <artifactId>springproject-library</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
 
@@ -42,13 +51,6 @@
             <scope>test</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.anand</groupId>
-            <artifactId>springproject-library</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
     </dependencies>
 
 
@@ -57,6 +59,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

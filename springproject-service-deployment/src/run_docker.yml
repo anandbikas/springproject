@@ -14,5 +14,7 @@
     template_path: "{{ playbook_dir }}/templates"
     pom_path: "{{ playbook_dir }}/../.."
 
+    ansible_roles_path: "{{ playbook_dir }}/../ansible"
+
   roles:
-    - "{{ playbook_dir }}/roles/service_docker_run"
+    - "{{ ansible_roles_path }}/roles/service_docker_run"

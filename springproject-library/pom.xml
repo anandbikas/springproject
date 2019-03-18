@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>Springproject Library</name>
     <artifactId>springproject-library</artifactId>
 
     <dependencies>

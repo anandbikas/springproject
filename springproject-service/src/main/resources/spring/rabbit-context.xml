@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:rabbit="http://www.springframework.org/schema/rabbit"
@@ -9,18 +9,18 @@
 
     <bean name="rabbitConnectionFactoryBean"
           class="org.springframework.amqp.rabbit.connection.RabbitConnectionFactoryBean">
-        <property name="username" value="${rabbitmq.username}"/>
-        <property name="password" value="${rabbitmq.password}"/>
-        <property name="virtualHost" value="${rabbitmq.vhost}"/>
+        <property name="username" value="${rabbitmq.username:guest}"/>
+        <property name="password" value="${rabbitmq.password:guest}"/>
+        <property name="virtualHost" value="${rabbitmq.vhost:/}"/>
         <property name="connectionTimeout" value="${rabbitmq.connectionTimeout:0}"/>
-        <property name="requestedHeartbeat" value="${rabbitmq.requestedHeartBeat:120}"/>
+        <property name="requestedHeartbeat" value="${rabbitmq.requestedHeartBeat:30}"/>
         <property name="useSSL" value="${rabbitmq.useSSL:false}"/>
         <property name="sslAlgorithm" value="${rabbitmq.sslAlgorithm:TLSv1.2}"/>
     </bean>
 
     <rabbit:connection-factory id="amqpConnectionFactory"
                                connection-factory="rabbitConnectionFactoryBean"
-                               addresses="${rabbitmq.cluster.hosts:${rabbitmq.host}:${rabbitmq.port}}"/>
+                               addresses="${rabbitmq.cluster.hosts:${rabbitmq.host:localhost}:${rabbitmq.port:5672}}"/>
 
 
     <bean id="rabbitRetryTemplate" class="org.springframework.retry.support.RetryTemplate">

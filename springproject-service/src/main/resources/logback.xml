@@ -3,8 +3,11 @@
 
     <timestamp key="timestamp" timeReference="contextBirth" datePattern="yyyyMMdd'T'HHmmss"/>
 
+    <property resource="META-INF/build-info.properties" />
+
     <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] &#60;%mdc, methodName=%method&#62; %logger{0} - %msg%n%n"/>
-    <property name="logFileName" value="logs/springproject-service-${timestamp}"/>
+    <property name="logFileName" value="logs/${build.artifact}"/>
+
 
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
