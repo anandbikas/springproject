@@ -49,4 +49,9 @@
         <!--<rabbit:listener queues="demoQueue1" ref="demoQueue1MessageListenerAdapter"/>-->
     <!--</rabbit:listener-container>-->
 
+    <!--&lt;!&ndash;Making these bean declare here so that dependency on rabbit can easily be removed by just excluding this context file&ndash;&gt;-->
+    <!--<bean class="com.anand.springproject.service.rabbitmq.DemoQueue1MessageReceiver"/>-->
+    <!--<bean class="com.anand.springproject.service.rabbitmq.DemoQueue2MessageListener"/>-->
+
+
 </beans>

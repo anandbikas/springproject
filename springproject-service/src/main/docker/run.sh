@@ -6,4 +6,4 @@ APP_HOME="-DAPP_HOME=$APP_HOME"
 
 JAVA_ARGS=" $APP_HOME $JAVA_OPTS $DEBUG"
 
-exec java -server $JAVA_ARGS -jar $SERVICE_JAR
+exec java -server $JAVA_ARGS -jar $SERVICE_JAR --spring.config.location=classpath:application.properties,$APP_HOME/conf/application-override.properties

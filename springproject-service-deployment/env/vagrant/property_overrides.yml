@@ -1,2 +1,4 @@
 ---
 rabbitmq_host: host.docker.internal
+rabbitmq_username: rabbit
+rabbitmq_password: password

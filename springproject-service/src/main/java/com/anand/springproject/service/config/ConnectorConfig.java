@@ -5,6 +5,7 @@ import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -14,14 +15,15 @@ import org.springframework.context.annotation.Configuration;
  * Redirect http to https
  */
 @Configuration
+@ConditionalOnProperty(name="server.ssl.enabled", havingValue = "true")
 public class ConnectorConfig {
 
     private static final String HTTP = "http";
-    @Value("${server.port}")
-    int serverPort;
-
-    @Value("${http.server.port}")
+    @Value("${http.server.port:8080}")
     int httpServerPort;
+
+    @Value("${server.port:8443}")
+    int httpsServerPort;
 
     @Bean
     public ServletWebServerFactory servletContainer() {
@@ -47,7 +49,7 @@ public class ConnectorConfig {
         connector.setScheme(HTTP);
         connector.setPort(httpServerPort);
         connector.setSecure(false);
-        connector.setRedirectPort(serverPort);
+        connector.setRedirectPort(httpsServerPort);
         return connector;
     }
 }
