@@ -10,6 +10,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ import java.time.LocalDateTime;
  */
 @Component
 @Configuration
+@ConditionalOnProperty(value="rabbit.enabled", havingValue = "true")
 public class DemoQueue2MessageListener implements MessageListener {
 
     private static final XLogger logger = XLoggerFactory.getXLogger(DemoQueue2MessageListener.class);
