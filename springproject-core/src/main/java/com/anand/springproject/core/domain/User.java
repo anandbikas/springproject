@@ -1,6 +1,6 @@
 package com.anand.springproject.core.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 
@@ -9,6 +9,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "user")
+@JsonPropertyOrder({User.ID, User.FIRST_NAME, User.LAST_NAME, User.EMAIL })
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     public final static String
