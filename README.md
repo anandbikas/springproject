@@ -8,3 +8,6 @@ docker run -p 15672:15672 -p 5672:5672 -p 5671:5671 -d --hostname my-rabbit --na
 
 ##### Docker Maven Plugin doc
 https://github.com/spotify/docker-maven-plugin
+
+##### MySQL Centos 7 setup
+https://www.mysqltutorial.org/install-mysql-centos/

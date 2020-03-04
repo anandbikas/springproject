@@ -3,6 +3,7 @@
  */
 package com.anand.springproject.service;
 
+import com.anand.springproject.library.context.RequestContextHolder;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +19,8 @@ public class SpringprojectServiceApplication {
     private static final XLogger logger = XLoggerFactory.getXLogger(SpringprojectServiceApplication.class);
 
     public static void main(String[] args) {
+        RequestContextHolder.createEmptyContext();
+
         logger.info("Starting SpringprojectApplication...");
         SpringApplication.run(SpringprojectServiceApplication.class, args);
     }

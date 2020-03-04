@@ -3,6 +3,7 @@ package com.anand.springproject.core.domain;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.util.StringJoiner;
 
 /**
  *
@@ -72,5 +73,15 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("email='" + email + "'")
+                .toString();
     }
 }
