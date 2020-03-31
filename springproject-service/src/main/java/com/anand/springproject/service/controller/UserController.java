@@ -3,7 +3,7 @@
  */
 package com.anand.springproject.service.controller;
 
-import com.anand.springproject.core.domain.User;
+import com.anand.springproject.core.domain.orm.User;
 import com.anand.springproject.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

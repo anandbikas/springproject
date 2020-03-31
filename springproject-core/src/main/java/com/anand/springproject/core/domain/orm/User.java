@@ -1,4 +1,4 @@
-package com.anand.springproject.core.domain;
+package com.anand.springproject.core.domain.orm;
 
 import com.fasterxml.jackson.annotation.*;
 

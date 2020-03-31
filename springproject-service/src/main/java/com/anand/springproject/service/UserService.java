@@ -1,6 +1,6 @@
 package com.anand.springproject.service;
 
-import com.anand.springproject.core.domain.User;
+import com.anand.springproject.core.domain.orm.User;
 import com.anand.springproject.library.sql.UserRepository;
 import com.anand.springproject.library.util.Util;
 import org.slf4j.ext.XLogger;
