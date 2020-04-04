@@ -1,6 +1,7 @@
 package com.anand.springproject.service;
 
 import com.anand.springproject.core.domain.orm.User;
+import com.anand.springproject.core.exception.NotFoundException;
 import com.anand.springproject.library.sql.UserRepository;
 import com.anand.springproject.library.util.Util;
 import org.slf4j.ext.XLogger;
@@ -41,11 +42,49 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public Iterable<User> getAllUsers() throws Exception{
+    public Iterable<User> getAllUsers(String firstName, String lastName) throws Exception{
         logger.info("Processing getAllUsers request");
-        return userRepo.findAll();
+
+        Iterable<User> users;
+
+        if(lastName==null){
+            if(firstName==null){
+                users = userRepo.findAll();
+            } else {
+                users = userRepo.findByFirstName(firstName);
+            }
+        } else {
+            if(firstName==null){
+                users = userRepo.findByLastName(lastName);
+            } else {
+                users = userRepo.findByFirstNameAndLastName(firstName, lastName);
+            }
+        }
+
+        return users;
     }
 
+
+    /**
+     *
+     * @param id
+     * @param email
+     * @return
+     * @throws Exception
+     */
+    public User updateEmailForId(int id, String email) throws Exception{
+        logger.info("Processing updateEmailForId request");
+
+        User user = userRepo.findById(id).orElse(null);
+
+        if(user == null){
+            throw logger.throwing(new NotFoundException(String.format("User with id: %d not found", id)));
+        }
+
+        int updatedCount = userRepo.updateEmailForId(id, email);
+        logger.debug("Records updated: " + updatedCount);
+        return userRepo.findById(id).orElse(null);
+    }
     /**
      *
      * @param user

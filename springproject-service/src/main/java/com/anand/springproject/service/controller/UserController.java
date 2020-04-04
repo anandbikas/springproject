@@ -8,10 +8,7 @@ import com.anand.springproject.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -40,9 +37,21 @@ public class UserController {
 
     @RequestMapping(
             method = RequestMethod.GET)
-    public ResponseEntity<Iterable<User>> getUsers()throws Exception{
+    public ResponseEntity<Iterable<User>> getUsers(
+            @RequestParam(name=User.FIRST_NAME, required = false) String firstName,
+            @RequestParam(name=User.LAST_NAME, required = false) String lastName)throws Exception{
 
-        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAllUsers(firstName, lastName), HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            value = "/updateEmailForId",
+            method = RequestMethod.GET)
+    public ResponseEntity<User> updateEmailForId(
+            @RequestParam(name=User.ID, required = true) int id,
+            @RequestParam(name=User.EMAIL, required = true) String email)throws Exception{
+
+        return new ResponseEntity<>(userService.updateEmailForId(id, email), HttpStatus.OK);
     }
 
     @RequestMapping(
