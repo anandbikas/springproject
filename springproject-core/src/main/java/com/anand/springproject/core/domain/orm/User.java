@@ -9,7 +9,10 @@ import java.util.StringJoiner;
  *
  */
 @Entity
-@Table(name = "user")
+@Table(name = "user",
+        indexes = {
+            @Index(name = "firstNLastName",  columnList="firstName,lastName"),
+        })
 @JsonPropertyOrder({User.ID, User.FIRST_NAME, User.LAST_NAME, User.EMAIL })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
