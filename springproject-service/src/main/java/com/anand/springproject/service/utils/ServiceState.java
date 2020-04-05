@@ -3,6 +3,7 @@
  */
 package com.anand.springproject.service.utils;
 
+import com.anand.springproject.library.context.RequestContextHolder;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,7 @@ public class ServiceState {
     public void refreshStateScheduler(){
 
         try {
+            RequestContextHolder.createEmptyContext();
             init();
         } catch (Exception ex){
             logger.error("Failed to update currentState." + ex);
