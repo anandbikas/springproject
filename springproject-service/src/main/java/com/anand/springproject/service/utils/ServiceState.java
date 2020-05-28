@@ -3,6 +3,7 @@
  */
 package com.anand.springproject.service.utils;
 
+import com.anand.springproject.core.exception.UnexpectedException;
 import com.anand.springproject.library.context.RequestContextHolder;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
@@ -57,8 +58,7 @@ public class ServiceState {
                 logger.info("currentState updated to " + currentState);
 
             } catch (final Exception ex) {
-                logger.debug("Failed to update currentState." + ex);
-                throw ex;
+                throw logger.throwing(XLogger.Level.WARN, new UnexpectedException("Failed to update currentState.", ex));
             }
             return true;
         });
@@ -120,8 +120,7 @@ public class ServiceState {
                 logger.info("currentState set to " + currentState);
 
             } catch (final Exception ex) {
-                logger.debug("Failed to update currentState." + ex);
-                throw ex;
+                throw logger.throwing(XLogger.Level.DEBUG, new UnexpectedException("Failed to update currentState.", ex));
             }
             return true;
         });

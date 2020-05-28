@@ -43,7 +43,7 @@ public class ExcelDocument {
             rows = sheet.getPhysicalNumberOfRows();
             
         } catch (Exception ex){
-            logger.debug("Failed to initialize excel document");
+            logger.error("Failed to initialize excel document");
             rows=0;
             return;
         }

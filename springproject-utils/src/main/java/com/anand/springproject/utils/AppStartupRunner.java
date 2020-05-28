@@ -1,5 +1,6 @@
 package com.anand.springproject.utils;
 
+import com.anand.springproject.core.exception.UnexpectedException;
 import com.anand.springproject.utils.commands.Command;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
@@ -26,7 +27,7 @@ public class AppStartupRunner implements ApplicationRunner, ApplicationContextAw
                 logger.info("Running command: {} ...", command);
                 applicationContext.getBean(command, Command.class).run();
             } catch (Exception ex){
-                    throw new RuntimeException(ex);
+                throw new UnexpectedException(String.format("Failed to run command %s", command), ex);
             }
         });
     }

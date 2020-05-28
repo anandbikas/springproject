@@ -1,9 +1,8 @@
 package com.anand.springproject.service;
 
 import com.anand.springproject.core.domain.Student;
+import com.anand.springproject.core.exception.NotFoundException;
 import com.anand.springproject.library.excel.ExcelDocument;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -43,7 +42,7 @@ public class DocService {
             case STUDENTS:
                 return getStudentObj(rollNumber);
             default:
-                throw new Exception("Doc " + namespace + " not supported");
+                throw new NotFoundException("Doc " + namespace + " not found");
         }
     }
 
@@ -63,7 +62,7 @@ public class DocService {
                 }
                 return students;
             default:
-                throw new Exception("Doc " + namespace + " not supported");
+                throw new NotFoundException("Doc " + namespace + " not found");
         }
     }
 

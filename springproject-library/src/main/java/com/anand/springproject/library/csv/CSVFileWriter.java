@@ -1,5 +1,6 @@
 package com.anand.springproject.library.csv;
 
+import com.anand.springproject.core.exception.UnexpectedException;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.slf4j.ext.XLogger;
@@ -51,8 +52,7 @@ public class CSVFileWriter {
             fileWriter = new FileWriter(csvFileName);
             csvFilePrinter = new CSVPrinter(fileWriter, DEFAULT_CSV_FORMAT.withDelimiter(delimiter).withHeader(headerLine));
         } catch (Exception e){
-            logger.error("Error occurred while creating CSV file: {}.", csvFileName);
-            throw e;
+            throw logger.throwing(XLogger.Level.ERROR, new UnexpectedException(String.format("Error occurred while creating CSV file: %s.", csvFileName), e));
         }
     }
 

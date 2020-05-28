@@ -42,6 +42,12 @@
             <artifactId>spring-aspects</artifactId>
         </dependency>
 
+        <!--spring-boot-starter-thymeleaf is used for custom error page handler-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
 
         <!--Other dependencies-->
         <dependency>
