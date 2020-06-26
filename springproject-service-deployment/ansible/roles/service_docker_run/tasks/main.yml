@@ -23,6 +23,7 @@
           -v {{ docker_target_dir }}/ssl:{{ app_home }}/ssl
           {{ tomcat_service_port_forward }}
           {{ service_debug_port_forward }}
+          {{ service_jmx_port_forward }}
           {{ docker_image }}
 
   register: command_output
