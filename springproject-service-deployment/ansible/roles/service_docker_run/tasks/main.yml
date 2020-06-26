@@ -6,15 +6,15 @@
 - name: Removing older images
   command: bash -c "docker rmi -f $(docker images -a | grep ^{{ service_group }}/{{ service_name }} | awk '{print $3}')"
   ignore_errors: yes
-  when: (local_image == "true")
+  when: (local_image == "true" and soft == "false")
 
 - name: Creating docker locally
-  command: "mvn -f {{ pom_path }} clean package -DskipTests -Dcobertura.skip=true -Djacoco.skip=true"
-  when: (local_image == "true")
+  command: "mvn -f {{ pom_path }} clean package -DskipTests -Dcobertura.skip=true -Djacoco.skip=true -Pdocker"
+  when: (local_image == "true" and soft == "false")
 
 - name: Pulling docker image from registry
   command: docker pull {{ docker_image }}
-  when: (local_image == "false")
+  when: (local_image == "false" and soft == "false")
 
 - name: Running container with specific configuration
   command: docker run --restart always --name={{ service_name }} -d

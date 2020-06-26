@@ -1,4 +1,5 @@
 ---
+soft: "false"
 local_image: "true"
 service_version: "latest"
 
