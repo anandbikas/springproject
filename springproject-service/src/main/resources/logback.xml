@@ -3,7 +3,7 @@
 
     <timestamp key="timestamp" timeReference="contextBirth" datePattern="yyyyMMdd'T'HHmmss"/>
 
-    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] &#60;%mdc, methodName=%method&#62; %logger{0} - %msg%n%n"/>
+    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] &#60;%mdc, methodName=%method&#62; %logger{0} - %msg%n"/>
     <property name="logFileName" value="logs/springproject-service"/>
 
 
@@ -78,8 +78,9 @@
 
 
     <logger name="com.anand" level="${log.level:-DEBUG}"/>
+    <logger name="org.springframework" level="${springframework.log.level:-WARN}"/>
 
-    <root level="${root.log.level:-WARN}">
+    <root level="${root.log.level:-INFO}">
         <appender-ref ref="FILE" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="ERROR_FILE" />
