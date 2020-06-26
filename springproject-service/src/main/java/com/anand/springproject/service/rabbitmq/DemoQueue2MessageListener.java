@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
  */
 @Component
 @Configuration
-@ConditionalOnProperty(value="rabbit.enabled", havingValue = "true")
+@ConditionalOnProperty(value="springproject.rabbit.enabled", havingValue = "true")
 public class DemoQueue2MessageListener implements MessageListener {
 
     private static final XLogger logger = XLoggerFactory.getXLogger(DemoQueue2MessageListener.class);

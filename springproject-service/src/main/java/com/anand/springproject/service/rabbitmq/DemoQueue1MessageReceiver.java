@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Configuration
-@ConditionalOnProperty(value="rabbit.enabled", havingValue = "true")
+@ConditionalOnProperty(value="springproject.rabbit.enabled", havingValue = "true")
 public class DemoQueue1MessageReceiver {
 
     public static final String queueName = "demo.queue.1";

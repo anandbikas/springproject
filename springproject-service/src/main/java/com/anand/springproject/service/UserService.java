@@ -22,7 +22,7 @@ public class UserService {
     @Autowired
     private Util util;
 
-    public UserService(UserRepository userRepo) {
+    public UserService(@Autowired(required = false) UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
