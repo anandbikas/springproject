@@ -14,6 +14,8 @@
         <module>springproject-library</module>
         <module>springproject-ansible</module>
         <module>springproject-service-deployment</module>
+        <module>springproject-boot-admin-service</module>
+        <module>springproject-boot-admin-service-deployment</module>
     </modules>
     <packaging>pom</packaging>
 
