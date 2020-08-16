@@ -15,7 +15,7 @@
     template_path: "{{ playbook_dir }}/templates"
     pom_path: "{{ playbook_dir }}/../.."
 
-    ansible_roles_path: "{{ playbook_dir }}/../ansible"
+    ansible_roles_path: "{{ playbook_dir }}/../../springproject-ansible/ansible"
 
   roles:
     - "{{ ansible_roles_path }}/roles/service_docker_run"

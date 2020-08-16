@@ -12,6 +12,7 @@
         <module>springproject-core</module>
         <module>springproject-utils</module>
         <module>springproject-library</module>
+        <module>springproject-ansible</module>
         <module>springproject-service-deployment</module>
     </modules>
     <packaging>pom</packaging>
