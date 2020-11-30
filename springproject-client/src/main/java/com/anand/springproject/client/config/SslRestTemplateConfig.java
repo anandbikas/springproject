@@ -67,7 +67,7 @@ public class SslRestTemplateConfig {
         final RequestConfig requestConfig =
                 RequestConfig.custom()
                         .setConnectTimeout(CONNECT_TIMEOUT_MS)
-                        .setSocketTimeout(REQUEST_TIMEOUT_MS)
+                        .setConnectionRequestTimeout(REQUEST_TIMEOUT_MS)
                         .setSocketTimeout(SOCKET_TIMEOUT_MS)
                         .build();
 
