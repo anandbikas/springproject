@@ -20,6 +20,7 @@ Author: Bikas Anand
     
 3. **MySQL Centos 7 setup**: 
     * https://www.mysqltutorial.org/install-mysql-centos/
+    * https://electrictoolbox.com/update-max-connections-mysql/ (Max connections)
 
 4. **SpringBoot Tomcat configuration**
     * https://www.baeldung.com/spring-boot-configure-tomcat  
@@ -28,6 +29,7 @@ Author: Bikas Anand
     * https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc/
     * https://www.javadevjournal.com/spring-mvc/spring-mvc-content-negotiation/
     * https://www.javainuse.com/spring/spring-boot-content-negotiation
+    * https://www.programcreek.com/java-api-examples/?api=org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer
 
 6. **Http Message Converters with Spring**
     * https://www.javadevjournal.com/spring/spring-http-message-converter
@@ -122,6 +124,9 @@ Author: Bikas Anand
     * https://stackoverflow.com/questions/22031128/how-to-update-an-entity-with-spring-data-jpa
     * https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.named-parameters
     * https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa
+    * https://www.baeldung.com/java-jpa-transaction-locks 
+      When the transaction needs to adhere to ACID rules strictly, we should use Pessimistic Locking. 
+      Optimistic Locking should be applied when we need to allow multiple concurrent reads and when eventual consistency is acceptable within the application context.
      
 22. **Composite primary key mysql**
 
@@ -163,10 +168,17 @@ Author: Bikas Anand
 34. **Long polling**
     * https://www.ably.io/concepts/long-polling
  
-35. **RabbitMQ Access**
-    * https://www.rabbitmq.com/access-control.html 
-
+35. **RabbitMQ**
+    * https://www.rabbitmq.com/access-control.html (Access Control)
+    * https://engineering.nanit.com/rabbitmq-retries-the-full-story-ca4cc6c5b493 (RabbitMQ Retries and Dead Letter Exchange)
+    * https://www.rabbitmq.com/confirms.html (Consumer Acknowledgements and Publisher Confirms)
+    * https://www.rabbitmq.com/nack.html
+    * https://docs.spring.io/spring-amqp/api/org/springframework/amqp/core/AcknowledgeMode.html
+    
 36. **Vault Spring boot**
+    * https://spring.io/projects/spring-vault#overview
+    * https://www.baeldung.com/spring-cloud-vault
+    * https://banzaicloud.com/blog/vault-java-spotguide/
 
 37. **LogRotate**
 
@@ -176,6 +188,20 @@ Author: Bikas Anand
 39. **Threads**
     * https://helpx.adobe.com/in/experience-manager/kb/securerandom-nextbytes-hangs-request-threads-in-aem.html
 
+40. **Kubernetes**
+    * https://www.driftrock.com/blog/kubernetes-zero-downtime-rolling-updates (zero-downtime rolling updates)
+    
+41. **Redis**
+    * https://hub.docker.com/r/rediscommander/redis-commander/ (Redis UI)
+    * https://www.baeldung.com/jedis-java-redis-client-library
+    * https://partners-intl.aliyun.com/help/doc-detail/98726.htm (JedisPool optimization)
+    * https://www.baeldung.com/spring-data-redis-tutorial
+    * (Jedis Lock)
+    * https://github.com/redis/jedis/issues/1931 (No common interface for JedisCommands and JedisClusterCommands)
 
+42. **Spring**
+    * https://www.baeldung.com/running-setup-logic-on-startup-in-spring
+    
 #### Troubleshooting
 1. https://stackoverflow.com/questions/5440429/springs-scheduled-error-only-one-asyncannotationbeanpostprocessor-may-exist
+2. https://jira.qos.ch/browse/LOGBACK-1406 (logback Seems all threads blocked)
