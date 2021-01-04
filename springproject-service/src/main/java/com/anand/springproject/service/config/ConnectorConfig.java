@@ -25,6 +25,28 @@ public class ConnectorConfig {
     @Value("${server.port:8443}")
     int httpsServerPort;
 
+    /**
+     * For only connector
+     */
+//    @Bean
+//    public ServletWebServerFactory servletContainer() {
+//
+//        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+//
+//        Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
+//        connector.setScheme(HTTP);
+//        connector.setPort(httpServerPort);
+//        connector.setSecure(false);
+//
+//        tomcat.addAdditionalTomcatConnectors(connector);
+//        return tomcat;
+//    }
+
+    /**
+     * For connector with redirect to https
+     *
+     * @return
+     */
     @Bean
     public ServletWebServerFactory servletContainer() {
 
