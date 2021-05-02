@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds">
+    <jmxConfigurator />
 
     <timestamp key="timestamp" timeReference="contextBirth" datePattern="yyyyMMdd'T'HHmmss"/>
 
@@ -78,7 +79,7 @@
 
 
     <logger name="com.anand" level="${log.level:-DEBUG}"/>
-    <logger name="org.springframework" level="${springframework.log.level:-WARN}"/>
+    <logger name="org.springframework" level="${springframework.log.level:-INFO}"/>
 
     <root level="${root.log.level:-INFO}">
         <appender-ref ref="FILE" />

@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = StatusController.STATUS_URL)
 public class StatusController {
-    public static final String STATUS_URL = "/springproject/status";
-    public static final String STATUS_URL_REFRESH = "/springproject/status/refresh";
+    public static final String STATUS_URL = "/status";
+    public static final String STATUS_URL_REFRESH = "/status/refresh";
 
 
     @Autowired

@@ -2,13 +2,13 @@
 #############################
 
 ## Rabbit
-rabbitmq.host={{ rabbitmq_host | default('localhost') }}
-rabbitmq.username={{ rabbitmq_username | default('guest') }}
-rabbitmq.password={{ rabbitmq_password | default('guest') }}
+spring.rabbitmq.host={{ rabbitmq_host | default('host.docker.internal') }}
+spring.rabbitmq.username={{ rabbitmq_username | default('guest') }}
+spring.rabbitmq.password={{ rabbitmq_password | default('guest') }}
 springproject.rabbit.enabled={{ springproject_rabbit_enabled | default('false') }}
 
 ## SQL
-spring.datasource.url=jdbc:mysql://{{ spring_datasource_host | default('localhost') }}:3306/{{ spring_datasource_db | default('springproject') }}
+spring.datasource.url=jdbc:mysql://{{ spring_datasource_host | default('host.docker.internal') }}:3306/{{ spring_datasource_db | default('springproject') }}
 spring.datasource.username={{ spring_datasource_username | default('root') }}
-spring.datasource.password={{ spring_datasource_password | default('password') }}
+spring.datasource.password={{ spring_datasource_password | default('root_password') }}
 spring.datasource.configure={{ spring_datasource_configure | default('false') }}

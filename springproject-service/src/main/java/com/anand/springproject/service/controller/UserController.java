@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping(value = UserController.DOC_URL)
 public class UserController {
-    public static final String DOC_URL = "/springproject/v1/users";
+    public static final String DOC_URL = "/v1/users";
 
     private UserService userService;
 

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = VersionController.VERSION_URL)
 public class VersionController
 {
-    public static final String VERSION_URL = "/springproject/version";
+    public static final String VERSION_URL = "/version";
 
     //TODO: Access logger
 

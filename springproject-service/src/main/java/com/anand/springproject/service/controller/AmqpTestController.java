@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = AmqpTestController.AMQP_TEST_URL)
 public class AmqpTestController
 {
-    public static final String AMQP_TEST_URL = "/springproject/amqptest";
+    public static final String AMQP_TEST_URL = "/amqptest";
 
     @Autowired
     AmqpDemo amqpDemo;

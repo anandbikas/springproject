@@ -85,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/error")
-                .antMatchers("/springproject/status");
+                .antMatchers("/status");
     }
 
     @Override

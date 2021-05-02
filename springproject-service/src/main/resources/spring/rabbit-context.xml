@@ -7,49 +7,49 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 	http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.7.xsd">
 
-    <bean name="rabbitConnectionFactoryBean"
-          class="org.springframework.amqp.rabbit.connection.RabbitConnectionFactoryBean">
-        <property name="username" value="${rabbitmq.username:guest}"/>
-        <property name="password" value="${rabbitmq.password:guest}"/>
-        <property name="virtualHost" value="${rabbitmq.vhost:/}"/>
-        <property name="connectionTimeout" value="${rabbitmq.connectionTimeout:0}"/>
-        <property name="requestedHeartbeat" value="${rabbitmq.requestedHeartBeat:30}"/>
-        <property name="useSSL" value="${rabbitmq.useSSL:false}"/>
-        <property name="sslAlgorithm" value="${rabbitmq.sslAlgorithm:TLSv1.2}"/>
-    </bean>
+    <!--<bean name="rabbitConnectionFactoryBean"-->
+          <!--class="org.springframework.amqp.rabbit.connection.RabbitConnectionFactoryBean">-->
+        <!--<property name="username" value="${spring.rabbitmq.username:guest}"/>-->
+        <!--<property name="password" value="${spring.rabbitmq.password:guest}"/>-->
+        <!--<property name="virtualHost" value="${spring.rabbitmq.vhost:/}"/>-->
+        <!--<property name="connectionTimeout" value="${spring.rabbitmq.connection-timeout:0}"/>-->
+        <!--<property name="requestedHeartbeat" value="${spring.rabbitmq.requested-heartbeat:30}"/>-->
+        <!--<property name="useSSL" value="${spring.rabbitmq.ssl.enabled:false}"/>-->
+        <!--<property name="sslAlgorithm" value="${spring.rabbitmq.ssl.algorithm:TLSv1.2}"/>-->
+    <!--</bean>-->
 
-    <rabbit:connection-factory id="amqpConnectionFactory"
-                               connection-factory="rabbitConnectionFactoryBean"
-                               addresses="${rabbitmq.cluster.hosts:${rabbitmq.host:localhost}:${rabbitmq.port:5672}}"/>
+    <!--<rabbit:connection-factory id="rabbitConnectionFactory"-->
+                               <!--connection-factory="rabbitConnectionFactoryBean"-->
+                               <!--addresses="${spring.rabbitmq.host:localhost}:${spring.rabbitmq.port:5672}"/>-->
 
 
     <bean id="rabbitRetryTemplate" class="org.springframework.retry.support.RetryTemplate">
         <property name="retryPolicy">
             <bean class="org.springframework.retry.policy.SimpleRetryPolicy">
-                <constructor-arg  name="maxAttempts" value="${rabbit.retry.maxAttempts:25}"/>
+                <constructor-arg  name="maxAttempts" value="${spring.rabbitmq.template.retry.max-attempts:25}"/>
             </bean>
         </property>
         <property name="backOffPolicy">
             <bean class="org.springframework.retry.backoff.FixedBackOffPolicy">
-                <property name="backOffPeriod" value="${rabbit.retry.backOffPeriod:5000}"/>
+                <property name="backOffPeriod" value="${spring.rabbitmq.template.retry.initial-interval:5000}"/>
             </bean>
         </property>
     </bean>
 
-    <rabbit:template id="amqpTemplate" connection-factory="amqpConnectionFactory" retry-template="rabbitRetryTemplate"/>
+    <rabbit:template id="amqpTemplate" connection-factory="rabbitConnectionFactory" retry-template="rabbitRetryTemplate"/>
 
     <bean name="amqpAdmin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
         <constructor-arg ref="amqpTemplate"/>
     </bean>
 
     <!--Optional Separate rabbit templates for exchange-->
-    <rabbit:template id="topicExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+    <rabbit:template id="topicExchangeAmqpTemplate" connection-factory="rabbitConnectionFactory"
                      retry-template="rabbitRetryTemplate" exchange="demo.topic.exchange"/>
 
-    <rabbit:template id="directExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+    <rabbit:template id="directExchangeAmqpTemplate" connection-factory="rabbitConnectionFactory"
                      retry-template="rabbitRetryTemplate" exchange="demo.direct.exchange"/>
 
-    <rabbit:template id="fanoutExchangeAmqpTemplate" connection-factory="amqpConnectionFactory"
+    <rabbit:template id="fanoutExchangeAmqpTemplate" connection-factory="rabbitConnectionFactory"
                      retry-template="rabbitRetryTemplate" exchange="demo.fanout.exchange"/>
 
 

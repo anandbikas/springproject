@@ -46,7 +46,7 @@ public class DemoQueue2MessageListener implements MessageListener {
 
 
     @Bean(name="demoQueue2ListenerContainer")
-    SimpleMessageListenerContainer container(@Qualifier("amqpConnectionFactory") ConnectionFactory connectionFactory,
+    SimpleMessageListenerContainer container(@Qualifier("rabbitConnectionFactory") ConnectionFactory connectionFactory,
                                              @Qualifier("demoQueue2MessageListener") MessageListener messageListener) {
 
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();

@@ -26,19 +26,19 @@ public class DocController {
     @RequestMapping(
             value = "v1/{namespace}/{id:.+}",
             method = RequestMethod.GET)
-    public ResponseEntity<String> getDocument(
+    public ResponseEntity<?> getDocument(
             @PathVariable final String namespace,
             @PathVariable final Integer id) throws Exception{
 
-        return new ResponseEntity(docService.getDocument(namespace, id), HttpStatus.OK);
+        return new ResponseEntity<>(docService.getDocument(namespace, id), HttpStatus.OK);
     }
 
     @RequestMapping(
             value = "v1/{namespace}",
             method = RequestMethod.GET)
-    public ResponseEntity<String> getDocuments(
+    public ResponseEntity<?> getDocuments(
             @PathVariable final String namespace) throws Exception{
 
-        return new ResponseEntity(docService.getDocuments(namespace), HttpStatus.OK);
+        return new ResponseEntity<>(docService.getDocuments(namespace), HttpStatus.OK);
     }
 }
