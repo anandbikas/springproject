@@ -2,6 +2,7 @@ package com.anand.springproject.service.config;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
+import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.apache.coyote.http2.Http2Protocol;
@@ -22,31 +23,34 @@ public class ConnectorConfig {
     private static final String HTTP = "http";
 
     @Value("${http.server.port:8080}")
-    int httpServerPort;
+    private int httpServerPort;
 
     @Value("${server.port:8443}")
-    int httpsServerPort;
+    private int httpsServerPort;
 
     @Value("${server.http2.enabled:true}")
-    boolean http2Enabled;
+    private boolean http2Enabled;
 
     @Value("${server.tomcat.threads.max}")
-    String maxThreads;
+    private String maxThreads;
 
     @Value("${server.tomcat.threads.min-spare}")
-    String minSpareThreads;
+    private String minSpareThreads;
 
     @Value("${server.tomcat.accept-count}")
-    String acceptCount;
+    private String acceptCount;
 
     @Value("${server.tomcat.connection-timeout}")
-    String connectionTimeout;
+    private String connectionTimeout;
+
+    @Value("${server.tomcat.keep-alive-timeout}")
+    private int keepAliveTimeout;
 
     @Value("${server.tomcat.max-connections}")
-    String maxConnections;
+    private String maxConnections;
 
     @Value("${server.max-http-header-size}")
-    String maxHttpHeaderSize;
+    private String maxHttpHeaderSize;
 
     /**
      * For only connector
@@ -100,6 +104,11 @@ public class ConnectorConfig {
             setProperty("connectionTimeout", connectionTimeout);
             setProperty("maxConnections", maxConnections);
             setProperty("maxHttpHeaderSize", maxHttpHeaderSize);
+
+            AbstractHttp11Protocol<?> httpHandler = ((AbstractHttp11Protocol<?>) getProtocolHandler());
+            httpHandler.setMaxKeepAliveRequests(-1);
+            httpHandler.setUseKeepAliveResponseHeader(true);
+            httpHandler.setKeepAliveTimeout(keepAliveTimeout);
 
             if(http2Enabled) {
                 addUpgradeProtocol(new Http2Protocol());

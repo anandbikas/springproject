@@ -38,12 +38,10 @@ public class DocService {
      */
     public Student getDocument(String namespace, int rollNumber) throws Exception{
 
-        switch (namespace.toLowerCase()){
-            case STUDENTS:
-                return getStudentObj(rollNumber);
-            default:
-                throw new NotFoundException("Doc " + namespace + " not found");
-        }
+        return switch (namespace.toLowerCase()){
+            case STUDENTS -> getStudentObj(rollNumber);
+            default -> throw new NotFoundException("Doc " + namespace + " not found");
+        };
     }
 
     /**
@@ -53,17 +51,14 @@ public class DocService {
      */
     public List<Student> getDocuments(String namespace) throws Exception{
 
-        switch (namespace.toLowerCase()){
-            case STUDENTS:
-                List<Student> students = new ArrayList<>();
-
-                for(int row=1; row<excelDocument.getRows(); row++) {
-                    students.add(getStudentObj(row));
-                }
-                return students;
-            default:
-                throw new NotFoundException("Doc " + namespace + " not found");
-        }
+        return switch (namespace.toLowerCase()){
+            case STUDENTS -> new ArrayList<>(){{
+                    for(int row=1; row<excelDocument.getRows(); row++) {
+                        add(getStudentObj(row));
+                    }
+                }};
+            default -> throw new NotFoundException("Doc " + namespace + " not found");
+        };
     }
 
     /**

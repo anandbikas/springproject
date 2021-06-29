@@ -21,6 +21,7 @@ Author: Bikas Anand
 3. **MySQL Centos 7 setup**: 
     * https://www.mysqltutorial.org/install-mysql-centos/
     * https://electrictoolbox.com/update-max-connections-mysql/ (Max connections)
+    * https://stackoverflow.com/questions/50379839/connection-java-mysql-public-key-retrieval-is-not-allowed
 
 4. **SpringBoot Tomcat configuration**
     * https://www.baeldung.com/spring-boot-configure-tomcat  
@@ -139,6 +140,7 @@ Author: Bikas Anand
  
 26. **Custom error page in spring**
     * https://www.techiedelight.com/display-custom-error-pages-in-spring-boot/
+    * https://www.javatpoint.com/spring-boot-thymeleaf-view
  
 27. **Aurora DB**
     * https://aws.amazon.com/blogs/database/using-the-data-api-to-interact-with-an-amazon-aurora-serverless-mysql-database/
@@ -159,14 +161,15 @@ Author: Bikas Anand
     * https://cloud.google.com/products/databases/
  
 32. **Google cloud memorystore**
-    * https://cloud.google.com/memorystore/
+    * https://cloud.google.com/memorystore/   
  
-33. **Sockets**
-    * https://www.smashingmagazine.com/2018/02/sse-websockets-data-flow-http2/
-    * https://samsaffron.com/archive/2015/12/29/websockets-caution-required
- 
-34. **Long polling**
+34. **Long polling vs WebSockets vs HTTP2 Push vs SSE**
     * https://www.ably.io/concepts/long-polling
+    * https://ably.com/topic/websockets
+    * AMQP, MQTT
+    * https://building.lang.ai/our-journey-from-websockets-to-http-2-4d069c54effd
+    * https://www.smashingmagazine.com/2018/02/sse-websockets-data-flow-http2
+    * https://samsaffron.com/archive/2015/12/29/websockets-caution-required
  
 35. **RabbitMQ**
     * https://www.rabbitmq.com/access-control.html (Access Control)
@@ -174,11 +177,15 @@ Author: Bikas Anand
     * https://www.rabbitmq.com/confirms.html (Consumer Acknowledgements and Publisher Confirms)
     * https://www.rabbitmq.com/nack.html
     * https://docs.spring.io/spring-amqp/api/org/springframework/amqp/core/AcknowledgeMode.html
+    * https://medium.com/swlh/delay-schedule-messages-in-rabbitmq-208b594cdc00
     
 36. **Vault Spring boot**
     * https://spring.io/projects/spring-vault#overview
     * https://www.baeldung.com/spring-cloud-vault
     * https://banzaicloud.com/blog/vault-java-spotguide/
+    * https://cloud.spring.io/spring-cloud-vault/reference/html/
+    * https://spring.io/projects/spring-cloud-vault
+    * https://spring.io/blog/2016/06/24/managing-secrets-with-vault
 
 37. **LogRotate**
 
@@ -187,6 +194,7 @@ Author: Bikas Anand
 
 39. **Threads**
     * https://helpx.adobe.com/in/experience-manager/kb/securerandom-nextbytes-hangs-request-threads-in-aem.html
+    * https://dzone.com/articles/threads-stuck-in-javanetsocketinputstreamsocketrea
 
 40. **Kubernetes**
     * https://www.driftrock.com/blog/kubernetes-zero-downtime-rolling-updates (zero-downtime rolling updates)
@@ -198,10 +206,54 @@ Author: Bikas Anand
     * https://www.baeldung.com/spring-data-redis-tutorial
     * (Jedis Lock)
     * https://github.com/redis/jedis/issues/1931 (No common interface for JedisCommands and JedisClusterCommands)
+    * https://github.com/redis/jedis/issues/916 (Standalone redis pool connection closing issue)
+    * https://stackoverflow.com/questions/14993644/configure-jedis-timeout
 
 42. **Spring**
     * https://www.baeldung.com/running-setup-logic-on-startup-in-spring
+    * https://github.com/spring-projects/spring-boot/issues/21628 (NoSuchMethodError)
+    * https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4 (Testing)
+    * https://dzone.com/articles/spring-boot-vs-spring-mvc-vs-spring-how-do-they-compare (Spring vs Boot vs MVC)
+
+42. **Tomcat Keep alive** 
+    * https://github.com/spring-projects/spring-boot/issues/23539 (Tomcat keepAliveTimeout and maxKeepAliveRequests)
+    * https://github.com/spring-projects/spring-boot/issues/15210
+    * https://www.imperva.com/learn/performance/http-keep-alive
     
+43. **Spring Cloud**
+    * https://www.baeldung.com/tracing-services-with-zipkin
+    * https://www.baeldung.com/spring-cloud-sleuth-single-application
+    * https://github.com/spring-cloud/spring-cloud-sleuth/issues/736
+    * https://medium.com/swlh/microservices-observability-with-zipkin-and-spring-cloud-sleuth-66508ce6840
+    
+44. **Spring Boot Admin**
+    * https://www.baeldung.com/spring-boot-admin
+    
+45. **HTTP2**
+    * https://softtechbuzz.mystrikingly.com/blog/how-to-use-http2-protocol-in-spring-boot-applications
+    * https://github.com/spring-projects/spring-boot/issues/15210 (max-keepalive-timeout is 2000 ms)
+    * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Keep-Alive
+    * https://tomcat.apache.org/tomcat-9.0-doc/config/http2.html
+    * https://stackoverflow.com/questions/42849209/configuring-maxkeepaliverequests-in-spring-boot-embedded-tomcat (maxKeepAliveRequests)
+    * https://stackoverflow.com/questions/56075154/keep-alive-configurations-of-spring-boot-app-with-embedded-tomcat
+    * https://stackoverflow.com/questions/39002090/spring-boot-limit-on-number-of-connections-created
+    
+46 **Rest Template**
+    * https://howtodoinjava.com/spring-boot2/resttemplate/resttemplate-timeout-example/
+    
+47. **Elastic Search**
+    * Post Man Collection: https://www.getpostman.com/collections/a23b54992406472f0ad9
+    * https://www.elastic.co/blog/found-elasticsearch-top-down
+    * https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up#building-indexes
+    * https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html
+    * https://www.elastic.co/blog/found-similarity-in-elasticsearch
+    * https://www.elastic.co/blog/found-sizing-elasticsearch#learning-more
+    * https://www.elastic.co/blog/faster-retrieval-of-top-hits-in-elasticsearch-with-block-max-wand
+    * https://www.elastic.co/guide/en/elasticsearch/reference/current/release-highlights-7.0.0.html
+    
+48. **Spring Session**
+    * Spring session library (using redis/ using sql)
+
 #### Troubleshooting
 1. https://stackoverflow.com/questions/5440429/springs-scheduled-error-only-one-asyncannotationbeanpostprocessor-may-exist
 2. https://jira.qos.ch/browse/LOGBACK-1406 (logback Seems all threads blocked)
