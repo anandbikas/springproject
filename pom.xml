@@ -51,6 +51,10 @@
         <org.springframework.cloud.sleuth.core.version>2.2.7.RELEASE</org.springframework.cloud.sleuth.core.version>
         <spring-boot-admin-starter-client.version>2.5.2</spring-boot-admin-starter-client.version>
 
+        <!--Swagger-->
+        <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
+        <com.github.kongchen.swagger.version>3.1.7</com.github.kongchen.swagger.version>
+
         <!--Log-->
         <org.slf4j.version>2.0.0-alpha1</org.slf4j.version>
 
@@ -144,6 +148,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
                 <version>${org.springframework.boot.version}</version>
+            </dependency>
+
+            <!--Swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox-boot-starter.version}</version>
             </dependency>
 
 

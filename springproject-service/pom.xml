@@ -55,6 +55,12 @@
             <version>${spring-boot-admin-starter-client.version}</version>
         </dependency>
 
+        <!-- Swagger dependencies -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
+
         <!-- Log dependencies -->
         <dependency>
             <groupId>org.slf4j</groupId>
