@@ -4,10 +4,10 @@
 
     <timestamp key="timestamp" timeReference="contextBirth" datePattern="yyyyMMdd'T'HHmmss"/>
 
-    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] &#60;%mdc, methodName=%method&#62; %logger{0} - %msg%n"/>
-    <property name="logFileName" value="logs/springproject-service"/>
+    <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] &#60;%mdc&#62; %logger{42}.%method - %msg%n%exception{10}"/>
 
-
+    <springProperty scope="context" name="logHome" source="LOG_HOME"/> <!-- Spring/Project property set in application.properties-->
+    <property name="logFileName" value="${logHome}/logs/springproject-service"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -72,19 +72,19 @@
         </encoder>
     </appender>
 
-    <!-- For API access logging -->
-    <logger name="accesslog" level="${accesslog.level:-INFO}" additivity="false">
-        <appender-ref ref="ACCESS_FILE"/>
-    </logger>
-
-
-    <logger name="com.anand" level="${log.level:-DEBUG}"/>
-    <logger name="org.springframework" level="${springframework.log.level:-INFO}"/>
-
     <root level="${root.log.level:-INFO}">
         <appender-ref ref="FILE" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="ERROR_FILE" />
     </root>
+
+    <logger name="com.anand" level="${log.level:-DEBUG}"/> <!-- System property -Dlog.level=INFO-->
+    <logger name="org.springframework" level="${springframework.log.level:-INFO}"/>
+
+    <!-- For API access logging -->
+    <logger name="accesslog" level="${accesslog.level:-INFO}" additivity="false">
+        <appender-ref ref="ACCESS_FILE"/>
+        <appender-ref ref="STDOUT" />
+    </logger>
 
 </configuration>

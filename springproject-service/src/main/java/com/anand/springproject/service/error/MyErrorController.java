@@ -54,8 +54,5 @@ public class MyErrorController implements ErrorController {
 //        throw (Exception) e;
 //    }
 
-    @Override
-    public String getErrorPath() {
-        return "/error";
-    }
+    //https://stackoverflow.com/questions/62436379/how-to-replace-errorcontroller-deprecated-function-on-spring-boot
 }

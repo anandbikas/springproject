@@ -156,7 +156,8 @@ public class JedisClientExample {
 
         try (Jedis jedis1 = jedisPool.getResource()) {
             // do operations with jedis resource
-            jedis.set("key2", "value2");
+            // with try resource jedis instance is auto closed implemented by AutoCloseable
+            jedis1.set("key2", "value2");
         }
 
         System.out.println("Complete!");

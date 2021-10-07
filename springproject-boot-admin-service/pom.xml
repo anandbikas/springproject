@@ -14,8 +14,8 @@
     <artifactId>springproject-boot-admin-service</artifactId>
 
     <properties>
-        <spring-boot-admin-server.version>2.4.1</spring-boot-admin-server.version>
-        <spring-boot-admin-starter-client.version>2.4.1</spring-boot-admin-starter-client.version>
+        <spring-boot-admin-server.version>2.5.2</spring-boot-admin-server.version>
+        <spring-boot-admin-starter-client.version>2.5.2</spring-boot-admin-starter-client.version>
         <spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
     </properties>
 
@@ -23,6 +23,11 @@
     <dependencies>
 
         <!-- Spring dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!-- Enable admin server and UI -->
         <dependency>
             <groupId>de.codecentric</groupId>

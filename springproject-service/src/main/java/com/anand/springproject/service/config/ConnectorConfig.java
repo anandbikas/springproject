@@ -85,10 +85,13 @@ public class ConnectorConfig {
             }
         };
 
-        Connector redirectConnector =  createConnector();
-        redirectConnector.setRedirectPort(httpsServerPort);
+        if (httpServerPort!=-1){
+            Connector redirectConnector = createConnector();
+            redirectConnector.setRedirectPort(httpsServerPort);
 
-        tomcat.addAdditionalTomcatConnectors(redirectConnector);
+            tomcat.addAdditionalTomcatConnectors(redirectConnector);
+        }
+
         return tomcat;
     }
 
