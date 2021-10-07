@@ -49,6 +49,7 @@
         <org.springframework.retry.version>1.3.1</org.springframework.retry.version>
         <org.springframework.cloud.version>3.0.3</org.springframework.cloud.version>
         <org.springframework.cloud.sleuth.core.version>2.2.7.RELEASE</org.springframework.cloud.sleuth.core.version>
+        <spring-boot-admin-starter-client.version>2.5.2</spring-boot-admin-starter-client.version>
 
         <!--Log-->
         <org.slf4j.version>2.0.0-alpha1</org.slf4j.version>
