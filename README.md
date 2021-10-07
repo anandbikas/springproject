@@ -84,6 +84,7 @@ Author: Bikas Anand
     * https://www.javadevjournal.com/spring-boot/spring-boot-hikari/
     * http://zetcode.com/articles/hikaricp/
     * https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby
+    * https://www.baeldung.com/spring-data-rest-intro
     
 17. **Custom SQL configuration**
     * https://www.javadevjournal.com/spring-boot/how-spring-boot-auto-configuration-works
@@ -208,6 +209,7 @@ Author: Bikas Anand
     * https://github.com/redis/jedis/issues/1931 (No common interface for JedisCommands and JedisClusterCommands)
     * https://github.com/redis/jedis/issues/916 (Standalone redis pool connection closing issue)
     * https://stackoverflow.com/questions/14993644/configure-jedis-timeout
+    * https://github.com/redis/jedis/issues/2050 (Jedis connection not closing)
 
 42. **Spring**
     * https://www.baeldung.com/running-setup-logic-on-startup-in-spring
