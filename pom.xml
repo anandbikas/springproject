@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.4</version>
+        <version>2.7.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -33,10 +33,8 @@
         <!-- Project Settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.16</java.version>
-        <maven.compiler.source>1.16</maven.compiler.source>
-        <maven.compiler.target>1.16</maven.compiler.target>
-        <maven.compiler.release>16</maven.compiler.release>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
 
         <!--Docker-->
@@ -44,40 +42,48 @@
         <ansible-maven-plugin.version>1.3.0</ansible-maven-plugin.version>
 
         <!-- Spring -->
-        <org.springframework.version>5.3.9</org.springframework.version>
-        <org.springframework.boot.version>2.5.4</org.springframework.boot.version>
-        <org.springframework.retry.version>1.3.1</org.springframework.retry.version>
-        <org.springframework.cloud.version>3.0.3</org.springframework.cloud.version>
-        <org.springframework.cloud.sleuth.core.version>2.2.7.RELEASE</org.springframework.cloud.sleuth.core.version>
+        <org.springframework.version>5.3.21</org.springframework.version>
+        <org.springframework.boot.version>2.7.7</org.springframework.boot.version>
+        <org.springframework.retry.version>2.0.0</org.springframework.retry.version>
+        <org.springframework.cloud.version>4.0.0</org.springframework.cloud.version>
         <spring-boot-admin-starter-client.version>2.5.2</spring-boot-admin-starter-client.version>
+
+        <tomcat.version>9.0.71</tomcat.version>
+        <thymeleaf.version>3.1.1.RELEASE</thymeleaf.version>
+        <snakeyaml.version>1.33</snakeyaml.version>
+        <jackson-bom.version>2.14.1</jackson-bom.version>
 
         <!--Swagger-->
         <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
-        <com.github.kongchen.swagger.version>3.1.7</com.github.kongchen.swagger.version>
+        <com.github.kongchen.swagger.version>3.1.8</com.github.kongchen.swagger.version>
 
         <!--Log-->
-        <org.slf4j.version>2.0.0-alpha1</org.slf4j.version>
+        <org.slf4j.version>2.0.6</org.slf4j.version>
 
         <!--Apache -->
-        <org.apache.poi.version>5.0.0</org.apache.poi.version> <!--POI - Java API To Access Microsoft Format Files-->
-        <org.apache.httpcomponents.version>4.5.13</org.apache.httpcomponents.version>
-        <org.apache.commons.version>1.8</org.apache.commons.version>
-        <org.apache.commons-lang3.version>3.11</org.apache.commons-lang3.version>
+        <org.apache.poi.version>5.2.3</org.apache.poi.version> <!--POI - Java API To Access Microsoft Format Files-->
+        <org.apache.httpcomponents.version>4.5.14</org.apache.httpcomponents.version>
+        <org.apache.commons.version>1.10.0</org.apache.commons.version>
+        <org.apache.commons.csv.version>1.9.0</org.apache.commons.csv.version>
+        <org.apache.commons-lang3.version>3.12.0</org.apache.commons-lang3.version>
         <org.apache.commons-collections4.version>4.4</org.apache.commons-collections4.version>
-        <org.apache.commons-io.version>2.8.0</org.apache.commons-io.version>
+        <org.apache.commons-io.version>2.11.0</org.apache.commons-io.version>
+        <org.apache.commons-configurations2.version>2.8.0</org.apache.commons-configurations2.version>
+        <org.apache.commons-text.version>1.10.0</org.apache.commons-text.version>
 
         <!--Test-->
+        <org.testng.version>7.7.1</org.testng.version>
         <org.jmockit.version>1.49</org.jmockit.version>
-        <org.testng.version>7.3.0</org.testng.version>
+        <org.apache.maven.surefire.version>3.0.0-M7</org.apache.maven.surefire.version>
 
         <!--MySQL-->
-        <mysql.connector.java.version>8.0.25</mysql.connector.java.version>
+        <mysql.connector.java.version>8.0.32</mysql.connector.java.version>
 
         <!--Redis-->
-        <redis.client.jedis.version>3.5.1</redis.client.jedis.version>
+        <redis.client.jedis.version>4.4.0-m2</redis.client.jedis.version>
 
          <!--Others-->
-        <netty.version>4.1.68.Final</netty.version>
+        <netty.version>4.1.87.Final</netty.version>
         <elasticsearch.version>7.15.0</elasticsearch.version>
 
     </properties>
@@ -136,7 +142,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-sleuth-core</artifactId>
-                <version>${org.springframework.cloud.sleuth.core.version}</version>
+                <version>${org.springframework.cloud.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -147,6 +153,24 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>${org.springframework.boot.version}</version>
+            </dependency>
+
+            <!--Mysql-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.java.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${org.springframework.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-rest</artifactId>
                 <version>${org.springframework.boot.version}</version>
             </dependency>
 
@@ -187,6 +211,16 @@
                 <artifactId>slf4j-ext</artifactId>
                 <version>${org.slf4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${org.slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${org.slf4j.version}</version>
+            </dependency>
 
 
             <!-- Apache dependencies -->
@@ -223,7 +257,13 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-csv</artifactId>
-                <version>${org.apache.commons.version}</version>
+                <version>${org.apache.commons.csv.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${org.apache.commons-text.version}</version>
             </dependency>
 
         </dependencies>
