@@ -27,6 +27,7 @@
         <module>springproject-service-deployment</module>
         <module>springproject-boot-admin-service</module>
         <module>springproject-boot-admin-service-deployment</module>
+        <module>springproject-design</module>
     </modules>
 
     <properties>
