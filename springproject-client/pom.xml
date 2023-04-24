@@ -15,7 +15,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-
         <!--Spring dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,25 +30,6 @@
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
         </dependency>
-
-
-        <!--Other dependencies-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-ext</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.anand</groupId>
-            <artifactId>springproject-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
 
         <!--Test dependencies-->
         <dependency>
@@ -68,6 +48,25 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!--Log dependencies-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-ext</artifactId>
+        </dependency>
+
+        <!--Apache dependencies-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <!--Other dependencies-->
+        <dependency>
+            <groupId>com.anand</groupId>
+            <artifactId>springproject-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
     </dependencies>

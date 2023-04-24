@@ -13,13 +13,9 @@
     <name>Springproject Utils</name>
     <artifactId>springproject-utils</artifactId>
 
-    <properties>
-
-    </properties>
-
     <dependencies>
 
-        <!-- Spring dependencies -->
+        <!--Spring dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -30,25 +26,24 @@
             <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
 
+        <!--Test dependencies-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-        <!-- Other dependencies -->
+        <!--Log dependencies-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
         </dependency>
 
+        <!--Other dependencies-->
         <dependency>
             <groupId>com.anand</groupId>
             <artifactId>springproject-library</artifactId>
             <version>${project.version}</version>
-        </dependency>
-
-
-        <!--test dependencies-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>

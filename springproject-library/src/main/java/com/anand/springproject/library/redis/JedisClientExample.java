@@ -6,7 +6,7 @@ import redis.clients.jedis.exceptions.JedisDataException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Java Redis Client
@@ -123,11 +123,11 @@ public class JedisClientExample {
         p.zadd("ranking", 126, userOneId);
         p.zadd("ranking", 325, userTwoId);
         Response<Boolean> pipeExists = p.sismember("searched#" + userOneId, "India");
-        Response<List<String>> pipeRanking = p.zrange("ranking", 0, -1);
+        Response<Set<String>> pipeRanking = p.zrange("ranking", 0, -1);
         p.sync();
 
         Boolean exists = pipeExists.get();
-        List<String> ranking = pipeRanking.get();
+        Set<String> ranking = pipeRanking.get();
 
 
         /*

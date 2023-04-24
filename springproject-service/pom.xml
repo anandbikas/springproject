@@ -15,7 +15,7 @@
 
     <dependencies>
 
-        <!-- Spring dependencies -->
+        <!--Spring dependencies-->
         <!--Use spring-boot-starter if tomcat server is not required-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,16 +52,22 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot-admin-starter-client.version}</version>
         </dependency>
 
-        <!-- Swagger dependencies -->
+        <!--Swagger dependencies-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
         </dependency>
 
-        <!-- Log dependencies -->
+        <!--Test dependencies-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Log dependencies-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
@@ -79,14 +85,6 @@
             <groupId>com.anand</groupId>
             <artifactId>springproject-library</artifactId>
             <version>${project.version}</version>
-        </dependency>
-
-
-        <!--Test dependencies-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
