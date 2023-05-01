@@ -68,7 +68,7 @@
 
         <!--Test-->
         <org.jmockit.version>1.49</org.jmockit.version>
-        <org.testng.version>7.3.0</org.testng.version>
+        <org.testng.version>7.7.0</org.testng.version>
 
         <!--MySQL-->
         <mysql.connector.java.version>8.0.25</mysql.connector.java.version>
