@@ -44,7 +44,9 @@
 
     <bean id="springprojectClientRetryAdvice" class="org.springframework.retry.interceptor.RetryOperationsInterceptor">
         <property name="retryOperations" ref="springprojectClientRetryTemplate" />
-        <property name="recoverer" ref="retryRecoverer"></property>
+        <property name="recoverer" ref="retryRecoverer" />
     </bean>
+
+    <bean class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
 </beans>

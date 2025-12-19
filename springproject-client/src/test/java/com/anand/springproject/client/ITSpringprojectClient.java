@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 @ContextConfiguration(locations = "classpath:spring/springproject-client-context.xml")
 @SpringBootTest
-public class SpringprojectClientTest {
+public class ITSpringprojectClient {
 
     @Autowired
     SpringProjectClient springProjectClient;

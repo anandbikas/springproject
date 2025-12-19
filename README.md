@@ -216,6 +216,7 @@ Author: Bikas Anand
     * https://github.com/spring-projects/spring-boot/issues/21628 (NoSuchMethodError)
     * https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4 (Testing)
     * https://dzone.com/articles/spring-boot-vs-spring-mvc-vs-spring-how-do-they-compare (Spring vs Boot vs MVC)
+    * https://reflectoring.io/spring-boot-test
 
 42. **Tomcat Keep alive** 
     * https://github.com/spring-projects/spring-boot/issues/23539 (Tomcat keepAliveTimeout and maxKeepAliveRequests)
