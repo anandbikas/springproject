@@ -29,8 +29,8 @@ public class ConnectorCustomizer {
                         httpHandler.setUseKeepAliveResponseHeader(true);
                         httpHandler.setKeepAliveTimeout(keepAliveTimeout);
 
-                        httpHandler.setUseServerCipherSuitesOrder(true);
-                        httpHandler.setSSLHonorCipherOrder(true);
+                        //httpHandler.setUseServerCipherSuitesOrder(true);
+                        //httpHandler.setSSLHonorCipherOrder(true);
                     }
                 });
             }

@@ -5,7 +5,7 @@ import com.anand.springproject.library.context.RequestContextHolder;
 import com.anand.springproject.library.context.RequestHeader;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,9 +15,10 @@ import java.util.Enumeration;
  * Request interceptor to create request context.
  *
  * REF: https://dzone.com/articles/correlation-id-for-logging-in-microservices
+ * https://stackoverflow.com/questions/72152105/migrate-handlerinterceptor-to-spring-boot-2-6
  */
 @Component
-public class RequestHandlerInterceptor extends HandlerInterceptorAdapter {
+public class RequestHandlerInterceptor implements HandlerInterceptor {
 
     /**
      *

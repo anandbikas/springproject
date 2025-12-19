@@ -6,7 +6,7 @@
 
     <property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] &#60;%mdc&#62; %logger{42}.%method - %msg%n%exception{10}"/>
 
-    <springProperty scope="context" name="logHome" source="LOG_HOME"/> <!-- Spring/Project property set in application.properties-->
+    <springProperty scope="system" name="logHome" source="LOG_HOME"/> <!-- Spring/Project property set in application.properties-->
     <property name="logFileName" value="${logHome}/logs/springproject-service"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

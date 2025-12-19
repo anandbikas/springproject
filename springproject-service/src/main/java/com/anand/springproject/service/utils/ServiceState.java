@@ -49,7 +49,7 @@ public class ServiceState {
             try {
                 logger.info("Trying to update currentState...");
 
-                if(random.nextInt(2)==0) {
+                if(random.nextInt(5)==3) {
                     throw new RuntimeException();
                 }
                 synchronized (currentState) {
