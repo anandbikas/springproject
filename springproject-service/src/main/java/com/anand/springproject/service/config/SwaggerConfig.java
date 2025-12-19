@@ -50,7 +50,7 @@ public class SwaggerConfig {
         ApiInfo apiInfo = new ApiInfo(
                 "Springproject Service",
                 "Springproject Service",
-                "1.0.0",
+                "2.0.0",
                 "Terms of service",
                 new Contact("Bikas Anand", "", "email@email.com"),
                 "Apache License Version 2.0",
