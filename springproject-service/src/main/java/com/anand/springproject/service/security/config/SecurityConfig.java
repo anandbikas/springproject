@@ -4,25 +4,29 @@ import com.anand.springproject.service.security.authentication.SSLAuthentication
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.authentication.AuthenticationManagerBeanDefinitionParser;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 
-
+/**
+ * <a href="https://www.baeldung.com/spring-deprecated-websecurityconfigureradapter">...</a>
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
     @Value("${server.ssl.client-auth:none}")
     private String serverSslClientAuth;
@@ -30,18 +34,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${server.ssl.enabled:false}")
     private boolean serverSslEnabled;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
+    @Bean
+    public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
         http
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(serverAuthenticationEntryPoint())
-        .and()
-                .csrf().disable()
-                .formLogin()
+                .sessionManagement(httpSecuritySessionManagementConfigurer ->
+                        httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
+                        httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(serverAuthenticationEntryPoint()))
+                .csrf(Customizer.withDefaults())
+                .formLogin(AbstractHttpConfigurer::disable)
+                .authenticationProvider(authenticationProvider())
         ;
 
         if(serverSslEnabled && serverSslClientAuth.equalsIgnoreCase("want")){
@@ -60,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                    .subjectPrincipalRegex("CN=(.*?)(?:,|$)")
 //                    .userDetailsService(userDetailsService());
         }
+        return http.build();
     }
 
     /**
@@ -81,20 +84,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         };
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-                .antMatchers("/error")
-                .antMatchers("/status")
-                .antMatchers("/assets/**")
-                .antMatchers("/actuator/**")
-                .antMatchers("/webjars/**");
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring()
+                .requestMatchers("/error")
+                .requestMatchers("/status")
+                .requestMatchers("/assets/**")
+                .requestMatchers("/actuator/**")
+                .requestMatchers("/webjars/**");
     }
 
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(
-                new AuthenticationManagerBeanDefinitionParser.NullAuthenticationProvider());
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        return new AuthenticationManagerBeanDefinitionParser.NullAuthenticationProvider();
     }
 
     @Bean
