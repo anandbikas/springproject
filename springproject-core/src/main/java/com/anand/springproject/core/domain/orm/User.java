@@ -2,7 +2,7 @@ package com.anand.springproject.core.domain.orm;
 
 import com.fasterxml.jackson.annotation.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.StringJoiner;
 
 /**
